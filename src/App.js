@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 import {  Route, Switch, Redirect } from 'react-router-dom'
+import 'semantic-ui-css/semantic.min.css'
+
 
 // Test page
 import Test from './../src/components/pages/test/test';
