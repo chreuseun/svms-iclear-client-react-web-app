@@ -1,14 +1,6 @@
-const ipAdd = {
-    workable:`172.51.1.64`, 
-    malis:`192.168.254.105`,
-    marick:`192.168.100.10`,
-    localhost: `127.0.0.1`,
-    maam_tejada: `192.168.43.15`,
-    macbook:`192.168.100.6`,
-    defence : ``
-}
+const ipAdd = `192.168.100.6` // <-- change this to the ipV4 of your machine
 
-const uri = ipAdd.macbook;
+const uri = ipAdd;
 const baseuri = `http://${uri}:4040`;
 
 export default baseuri;

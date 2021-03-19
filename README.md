@@ -66,3 +66,12 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+### instructions to install and run the file
+
+1. npm install
+2. To configure the IP of the URL just go to the `src/res/baseuir.js`, and then edit the ipV4
+3. npm run start
+
+### WARNING Make sure you are running the svms-iclear-server
