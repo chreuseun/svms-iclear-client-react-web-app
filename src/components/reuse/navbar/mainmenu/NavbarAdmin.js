@@ -4,23 +4,15 @@ import { Menu , Container, Dropdown } from 'semantic-ui-react';
 import axios from 'axios';
 import baseURL from '../../../../res/baseuri'; 
 
-//COMPONENTS LIST *******************************************************************************
 
-// *** USERS
-import InsertNewAdmin from '../../../../components/pages/protected/menu/menuAdmin/Form_AddAdmin'; // INDEX
-import ManageUser from '../../../../components/pages/protected/menu/menuAdmin/ManageUsers'; // INDEX
-
-// ***  DEPARTMENTS
-import InsertNewDepartment from './../../../pages/protected/menu/menuDepartment/Form_AddDepartment'; // INDEX
-import ManageDepartments from './../../../pages/protected/menu/menuDepartment/ManageDepartments'; // INDEX
-
-// *** ACADYEAR/SEMESTER
-import ManageAcadYear from './../../../pages/protected/menu/menuAcadYear/AcadYear/ManageAcadYear'; // INDEX
-import ManageSemester from './../../../pages/protected/menu/menuAcadYear/Semester/MangeSemester'; // INDEX
-
-// ** STUDENT
-import UploadStudent from './../../../pages/protected/menu/menuStudent/UploadCSV'; // INDEX
-import StudentList from './../../../pages/protected/menu/menuStudent/StudentList'; // INDEX
+import InsertNewAdmin from '../../../../components/pages/protected/menu/menuAdmin/Form_AddAdmin'; 
+import ManageUser from '../../../../components/pages/protected/menu/menuAdmin/ManageUsers'; 
+import InsertNewDepartment from './../../../pages/protected/menu/menuDepartment/Form_AddDepartment'; 
+import ManageDepartments from './../../../pages/protected/menu/menuDepartment/ManageDepartments'; 
+import ManageAcadYear from './../../../pages/protected/menu/menuAcadYear/AcadYear/ManageAcadYear'; 
+import ManageSemester from './../../../pages/protected/menu/menuAcadYear/Semester/MangeSemester'; 
+import UploadStudent from './../../../pages/protected/menu/menuStudent/UploadCSV'; 
+import StudentList from './../../../pages/protected/menu/menuStudent/StudentList'; 
 
 import { DYCIBigLogo } from '../../../sturcture/atoms';
 
@@ -78,7 +70,7 @@ const NavbarAdmin = (props) => {
 
         return () => (UpdateHooks=false);
 
-    },[]);
+    },[history, location.pathname]);
 
     if(!didMount) {
         return null;
@@ -90,31 +82,26 @@ const NavbarAdmin = (props) => {
 
     const SubmenuComponent = () => {
         
-        // ON GOING - DONE
         if( location.pathname  === '/menu/newuser') {
             return(
                <InsertNewAdmin/> 
             )
         } 
-        // ON GOING - DONE
         else if( location.pathname  === '/menu/configaccount') {
             return(
                <ManageUser/> 
             )
         } 
-        // ON GOING - DONE
         else if( location.pathname  === '/menu/newdepartment'){
             return(
                 <InsertNewDepartment/> 
              )
         } 
-        // ON GOING - DONE
         else if( location.pathname  === '/menu/configdepartment'){
             return(
                 <ManageDepartments/> 
              )
         }
-        // ON GOING - DONE
         else if( location.pathname  === '/menu/config_acad_year'){
             return(
                 <ManageAcadYear/> 
