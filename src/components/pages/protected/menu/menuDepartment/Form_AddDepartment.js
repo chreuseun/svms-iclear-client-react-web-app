@@ -1,19 +1,16 @@
 import React, {  useState, useEffect } from 'react'
 import { Form, Header,Segment, Button,Divider, Label, Container, Dropdown, Radio} from 'semantic-ui-react'
 import axios from 'axios';
+import { withRouter} from "react-router-dom";
+
 import baseURL from '../../../../../res/baseuri';
-import { withRouter, Redirect} from "react-router-dom";
-//COMPONENTS
 import Loader from '../../../../reuse/loader';
 
 
 const  FormExampleSubcomponentControl=  (props) => {
-    
-    const _isMounted = false;
     const {history} = props;
-    //STATES
-    const [loader, setLoader] = useState(true);
 
+    const [loader, setLoader] = useState(true);
     const [ type , setType ] = useState([]);  // dept type ADMIN OR USER
     const [ acadlevel , setAcadLevel] = useState([]);  // Academic Level
     const [ course , setCourse ] = useState([]);  // Course
@@ -31,7 +28,6 @@ const  FormExampleSubcomponentControl=  (props) => {
     const [ valIsChecked, setValIsChecked] = useState('none');
     
     useEffect(() => {
-        
         const header = {
             headers: {
                 authorization : localStorage.getItem('x')
@@ -42,32 +38,36 @@ const  FormExampleSubcomponentControl=  (props) => {
             try{
               const authorization = await await axios.post(`${baseURL}/api/auth` ,{} ,header);
 
-              if(authorization.data.msg !== 'auth' || !authorization || authorization.data.user_details.user_type_id !== 'ADMIN') {
+              if(
+                authorization.data.msg !== 'auth' || !authorization || authorization.data.user_details.user_type_id !== 'ADMIN') {
                   localStorage.clear();
-                  history.push("/");
+                  history.push('/');
+                  return 
               }
 
-                let result = await axios.post(`${baseURL}/api/departmentstype/get`,{},header);
-                setType(result.data.sqlResult)
-                // console.log('TYPE OK');
+              let result = await axios.post(`${baseURL}/api/departmentstype/get`,{},header);
+              setType(result.data.sqlResult)
 
-                result = await axios.post(`${baseURL}/api/educlevel/get`,{},header);
-                setAcadLevel(result.data.sqlResult)
-                // console.log('acadlevel OK');
+              result = await axios.post(`${baseURL}/api/educlevel/get`,{},header);
+              setAcadLevel(result.data.sqlResult)
 
-                result = await axios.post(`${baseURL}/api/educcourselevel/get`,{},header);
-                setSubDate(result.data.sqlResult)
-                // console.log('yr_cors OK');
+              result = await axios.post(`${baseURL}/api/educcourselevel/get`,{},header);
+              setSubDate(result.data.sqlResult)
 
-                setLoader(false)
+              setLoader(false)
 
             } catch(err) {
-                    props.history.push('/')
+              history.push('/')
+              /*
+              
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMxLCJ1c2VybmFtZSI6ImV1bmlsbGVVU0VSIiwidXNlcl90eXBlX2lkIjoiQURNSU4iLCJ0cmFkaXRpb25hbF9kZXB0IjowLCJ2aW9sYXRpb25fZGVwdCI6MCwiYWN0aXZpdHlfZGVwdCI6MCwiaWF0IjoxNjI5ODYyMDU4LCJleHAiOjE2Mjk5NDg0NTh9.3IwXynOjFvZ7kUBf9yNg0JfrGvP3o3VTW422k_yZHlo"
+              */
             } 
         }
 
         x();
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // ON SUBMIT

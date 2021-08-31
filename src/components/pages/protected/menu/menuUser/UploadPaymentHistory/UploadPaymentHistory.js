@@ -4,7 +4,7 @@ import { withRouter} from "react-router-dom";
 import {UserNavigation} from '../../../../../sturcture/template'
 
 
-import Child from './UploadPaymentForm';
+import UploadPaymentForm from './UploadPaymentForm';
 
 const UploadPaymentHistory = () => {
 
@@ -12,7 +12,7 @@ const UploadPaymentHistory = () => {
         
         const {pushToLink, userDetails} = data;
         return (
-            <Child pushToLink={pushToLink} userDetails={userDetails} /> 
+            <UploadPaymentForm pushToLink={pushToLink} userDetails={userDetails} /> 
         )
     }
 
