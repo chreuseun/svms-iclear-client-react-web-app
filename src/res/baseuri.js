@@ -1,7 +1,6 @@
-const ipAdd = 'https://svms-iclear-server.herokuapp.com';  ///`192.168.100.3` // <-- change this to the ipV4 of your machine
-
-const uri = ipAdd;
-const baseuri = `http://${uri}:4040`;
+const heroku = 'https://svms-iclear-server.herokuapp.com';
+const local = 'http://192.168.125.201:4040';
+const baseuri = heroku || local;
 
 export default baseuri;
     
